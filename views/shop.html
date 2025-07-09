@@ -3,14 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Shop</title>
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="/">Shop</a></li>
-          <li><a href="/admin/add-products">Add Products</a></li>
+  <body class="p-0 m-0 font-san">
+    <header class="w-full h-8 p-8 bg-cyan-600">
+      <nav class="h-full flex items-center">
+        <ul class="m-0 p-0 flex gap-4">
+          <li class="m-0 p-0">
+            <a
+              class="text-white hover:text-slate-300 active:text-white-400"
+              href="/"
+              >Shop</a
+            >
+          </li>
+          <li class="m-0 p-0">
+            <a
+              class="text-white hover:text-slate-300 active:text-white-400"
+              href="/admin/add-products"
+              >Add Products</a
+            >
+          </li>
         </ul>
       </nav>
     </header>

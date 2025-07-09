@@ -3,21 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Add Product</title>
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="/">Shop</a></li>
-          <li><a href="/add-products">Add Products</a></li>
+  <body class="p-0 m-0 font-san">
+    <header class="w-full h-8 p-8 bg-cyan-600">
+      <nav class="h-full flex items-center">
+        <ul class="m-0 p-0 flex gap-4">
+          <li class="m-0 p-0">
+            <a
+              class="text-white hover:text-slate-300 active:text-black"
+              href="/"
+              >Shop</a
+            >
+          </li>
+          <li class="m-0 p-0">
+            <a
+              class="text-white hover:text-slate-300 active:text-black"
+              href="/admin/add-products"
+              >Add Products</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
-    <main>
-      <form action="/admin/products" method="POST">
-        <input type="text" name="product" />
-        <button type="submit">Add User</button>
+    <main class="p-8">
+      <form
+        class="md:w-2/4 sm:w-3/4 m-auto"
+        action="/admin/products"
+        method="POST"
+      >
+        <div class="w-full">
+          <label class="block w-full" for="title">Title</label>
+          <input
+            class="block w-full border-2 border-cyan-500 rounded-sm focus:outline-none"
+            type="text"
+            name="title"
+            id="title"
+          />
+        </div>
+        <button
+          class="cursor-pointer mt-4 bg-slate-500 rounded-md text-md hover:bg-slate-600 p-2 text-white"
+          type="submit"
+        >
+          Add Product
+        </button>
       </form>
     </main>
   </body>
