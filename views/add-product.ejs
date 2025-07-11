@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/head') %>
+  <body class="p-0 m-0 font-san">
+    <%- include('include/header') %>
+    <main class="p-8">
+      <form
+        class="md:w-2/4 sm:w-3/4 m-auto"
+        action="/admin/add-products"
+        method="POST"
+      >
+        <div class="w-full">
+          <label class="block w-full" for="title">Title</label>
+          <input
+            required
+            class="block p-2 w-full border-2 border-cyan-500 rounded-sm focus:outline-none"
+            type="text"
+            name="title"
+            id="title"
+          />
+        </div>
+        <button
+          class="cursor-pointer mt-4 bg-slate-500 rounded-md text-md hover:bg-slate-600 hover:scale-110 transition p-2 text-white"
+          type="submit"
+        >
+          Add Product
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

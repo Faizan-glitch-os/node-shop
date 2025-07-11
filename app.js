@@ -6,16 +6,17 @@ const shopRouter = require("./routes/shop");
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.set("views", "views");
+
 app.use(bodyParser.urlencoded());
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", adminRouter);
 app.use(shopRouter);
 
 app.use((req, res, next) => {
-  res
-    .status(404)
-    .sendFile(path.join(__dirname, "views", "page-not-found.html"));
+  res.status(404).render("page-not-found", { pageTitle: "Not Found" });
 });
 
-app.ro;
 app.listen(3000);
