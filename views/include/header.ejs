@@ -2,13 +2,36 @@
   <nav class="h-full flex items-center">
     <ul class="m-0 p-0 flex gap-4">
       <li class="m-0 p-0">
-        <a class="text-white hover:text-slate-300 active:text-black" href="/"
+        <a
+          class="hover:text-slate-300 <%= path === 'shop' ? 'active:text-black' : 'text-white' %>"
+          href="/"
           >Shop</a
         >
       </li>
       <li class="m-0 p-0">
         <a
-          class="text-white hover:text-slate-300 active:text-black"
+          class="hover:text-slate-300 <%= path === 'product-list' ? 'active:text-black' : 'text-white' %>"
+          href="/product-list"
+          >Products</a
+        >
+      </li>
+      <li class="m-0 p-0">
+        <a
+          class="-slate-300 <%= path === 'cart' ? 'active:text-black' : 'text-white' %>"
+          href="/cart"
+          >Cart</a
+        >
+      </li>
+      <li class="m-0 p-0">
+        <a
+          class="hover:text-slate-300 <%= path === 'admin/add-product' ? 'active:text-black' : 'text-white' %>"
+          href="/admin/add-products"
+          >Add Products</a
+        >
+      </li>
+      <li class="m-0 p-0">
+        <a
+          class="hover:text-slate-300 <%= path === 'admin/add-product' ? 'active:text-black' : 'text-white' %>"
           href="/admin/add-products"
           >Add Products</a
         >

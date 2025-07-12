@@ -1,7 +1,10 @@
 const Product = require("../models/product-model");
 
 exports.getAddProductsPage = (req, res, next) => {
-  res.render("add-product", { pageTitle: "Add Product" });
+  res.render("admin/add-product", {
+    pageTitle: "Add Product",
+    path: "admin/add-product",
+  });
 };
 
 exports.postAddProductsPage = (req, res, next) => {
@@ -12,5 +15,5 @@ exports.postAddProductsPage = (req, res, next) => {
     req.body.description
   );
   product.save();
-  res.redirect("/");
+  res.redirect("/product-list");
 };
