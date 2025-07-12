@@ -9,7 +9,7 @@
         action="/admin/add-products"
         method="POST"
       >
-        <div class="w-full">
+        <div class="w-full flex flex-col gap-2">
           <label class="block w-full" for="title">Title</label>
           <input
             required
@@ -17,6 +17,30 @@
             type="text"
             name="title"
             id="title"
+          />
+          <label class="block w-full" for="img">Image</label>
+          <input
+            required
+            class="block p-2 w-full border-2 border-cyan-500 rounded-sm focus:outline-none"
+            type="text"
+            name="img"
+            id="img"
+          />
+          <label class="block w-full" for="price">Price</label>
+          <input
+            required
+            class="block p-2 w-full border-2 border-cyan-500 rounded-sm focus:outline-none"
+            type="number"
+            name="price"
+            id="price"
+          />
+          <label class="block w-full" for="description">Description</label>
+          <input
+            required
+            class="block p-2 w-full border-2 border-cyan-500 rounded-sm focus:outline-none"
+            type="text"
+            name="description"
+            id="description"
           />
         </div>
         <button
