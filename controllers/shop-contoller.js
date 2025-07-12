@@ -1,7 +1,7 @@
 const Product = require("../models/product-model");
 
-exports.getProducts = (req, res, next) => {
-  Product.getAllProducts((products) => {
+exports.getProductList = (req, res, next) => {
+  Product.getAllProduct((products) => {
     res.render("shop/product-list", {
       pageTitle: "Shop",
       path: "product-list",
@@ -10,23 +10,23 @@ exports.getProducts = (req, res, next) => {
   });
 };
 
-exports.cart = (req, res, next) => {
+exports.getIndex = (req, res, next) => {
+  res.render("shop/index", {
+    pageTitle: "Shop",
+    path: "shop",
+  });
+};
+
+exports.getCart = (req, res, next) => {
   res.render("shop/cart", {
     pageTitle: "Cart",
     path: "cart",
   });
 };
 
-exports.checkout = (req, res, next) => {
+exports.getCheckout = (req, res, next) => {
   res.render("shop/checkout", {
     pageTitle: "Checkout",
     path: "checkout",
-  });
-};
-
-exports.index = (req, res, next) => {
-  res.render("shop/index", {
-    pageTitle: "Shop",
-    path: "shop",
   });
 };

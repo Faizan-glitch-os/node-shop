@@ -29,7 +29,7 @@ module.exports = class Product {
     });
   }
 
-  static getAllProducts(callBack) {
+  static getAllProduct(callBack) {
     getProductsFile(callBack);
   }
 };

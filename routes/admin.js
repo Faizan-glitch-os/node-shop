@@ -8,7 +8,9 @@ const adminRouter = express.Router();
 
 adminRouter
   .route("/add-products")
-  .get(adminController.getAddProductsPage)
-  .post(adminController.postAddProductsPage);
+  .get(adminController.getAddProducts)
+  .post(adminController.postAddProducts);
+
+adminRouter.route("/product").get(adminController.getAdminProduct);
 
 module.exports = adminRouter;
