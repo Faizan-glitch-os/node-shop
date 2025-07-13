@@ -11,11 +11,13 @@ exports.getProductList = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
-  console.log("get product route");
   Product.getProduct(req.params.productId, (product) => {
-    console.log(product);
+    res.render("shop/product-details", {
+      prod: product,
+      pageTitle: product.title,
+      path: "/product-list",
+    });
   });
-  res.redirect("/");
 };
 
 exports.getIndex = (req, res, next) => {
