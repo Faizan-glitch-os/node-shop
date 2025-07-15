@@ -11,10 +11,12 @@
       <p class="text-lg font-light text-slate-700"><%= prod.description %></p>
       <form action="/cart" method="post">
         <button
+          type="submit"
           class="py-2 px-4 rounded text-md text-slate-white bg-slate-500 hover:bg-slate-600 hover:cursor-pointer hover:scale-110 transition active:scale-75"
         >
           Add to cart
         </button>
+        <input type="hidden" name="productId" value="<%= prod.id %>" />
       </form>
     </main>
   </body>

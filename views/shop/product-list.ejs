@@ -34,12 +34,19 @@
                   Details
                 </button>
               </form>
-
-              <button
-                class="py-2 px-4 mt-8 rounded text-md text-slate-white bg-slate-500 hover:bg-slate-600 hover:cursor-pointer hover:scale-110 transition active:scale-75"
-              >
-                Add to cart
-              </button>
+              <form class="inline" action="/cart" method="post">
+                <button
+                  type="submit"
+                  class="py-2 px-4 rounded text-md text-slate-white bg-slate-500 hover:bg-slate-600 hover:cursor-pointer hover:scale-110 transition active:scale-75"
+                >
+                  Add to cart
+                </button>
+                <input
+                  type="hidden"
+                  name="productId"
+                  value="<%= element.id %>"
+                />
+              </form>
             </div>
           </div>
         </article>
