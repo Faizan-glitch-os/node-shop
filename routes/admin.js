@@ -11,9 +11,9 @@ adminRouter
 adminRouter
   .route("/add-products")
   .get(adminController.getAddProducts)
-  .post(adminController.postAddProducts);
+  .post(adminController.saveNewProduct);
 
-adminRouter.route("/product").get(adminController.getAdminProduct);
+adminRouter.route("/product").get(adminController.getAdminProducts);
 
 adminRouter
   .route("/edit-product/:productId")

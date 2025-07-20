@@ -6,9 +6,11 @@ const shopRouter = express.Router();
 
 shopRouter.route("/").get(shopController.getIndex);
 
-shopRouter.route("/product-list").get(shopController.getProductList);
+shopRouter.route("/product-list").get(shopController.getAllProducts);
 
-shopRouter.route("/product-list/:productId").post(shopController.getProduct);
+shopRouter
+  .route("/product-list/:productId")
+  .post(shopController.getProductById);
 
 shopRouter.route("/cart").get(shopController.getCart);
 
