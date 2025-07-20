@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const Cart = require("./cart-model");
 
 //get path to the file
 const filePath = path.join(__dirname, "..", "data", "products.json");
@@ -34,6 +35,41 @@ module.exports = class Product {
       //write updated products array to file system
       fs.writeFile(filePath, JSON.stringify(products), (err) => {
         console.log(err);
+      });
+    });
+  }
+
+  static editProduct(id, title, img, price, description, callBack) {
+    getProductsFile((products) => {
+      const existingIndex = products.findIndex((product) => product.id === id);
+      const existingProduct = products[existingIndex];
+
+      if (existingProduct) {
+        const updatedProduct = {
+          id,
+          title,
+          img,
+          price,
+          description,
+        };
+        products[existingIndex] = updatedProduct;
+
+        fs.writeFile(filePath, JSON.stringify(products), (err) => {
+          callBack(err);
+        });
+      }
+    });
+  }
+
+  static deleteProduct(id) {
+    getProductsFile((products) => {
+      const updatedProducts = products.filter((product) => product.id !== id);
+
+      fs.writeFile(filePath, JSON.stringify(updatedProducts), (err) => {
+        if (!err) {
+          //also delete product from cart
+          Cart.deleteProduct(id);
+        }
       });
     });
   }

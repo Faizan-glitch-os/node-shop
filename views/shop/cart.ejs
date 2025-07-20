@@ -3,6 +3,16 @@
   <%- include('../include/head') %>
   <body>
     <%- include('../include/header') %>
-    <main><p>Cart</p></main>
+    <main>
+      <% if (prod.length > 0) { %>
+      <ul>
+        <% prod.forEach(p => { %>
+        <li><%= p.productData.title %>(<%= p.quantity %>)</li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <h1>No products in the cart</h1>
+      <% } %>
+    </main>
   </body>
 </html>
