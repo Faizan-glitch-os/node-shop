@@ -14,6 +14,10 @@ shopRouter.route("/cart").get(shopController.getCart);
 
 shopRouter.route("/cart").post(shopController.postCart);
 
+shopRouter
+  .route("/cart-delete-product")
+  .post(shopController.postDeleteCartProduct);
+
 shopRouter.route("/orders").get(shopController.getOrders);
 
 shopRouter.route("/checkout").get(shopController.getCheckout);

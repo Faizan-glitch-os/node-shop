@@ -3,11 +3,27 @@
   <%- include('../include/head') %>
   <body>
     <%- include('../include/header') %>
-    <main>
+    <main class="p-8">
       <% if (prod.length > 0) { %>
       <ul>
         <% prod.forEach(p => { %>
-        <li><%= p.productData.title %>(<%= p.quantity %>)</li>
+        <li>
+          <%= p.productData.title %>(<%= p.quantity %>)
+          <p></p>
+          <form action="/cart-delete-product" method="post">
+            <input
+              type="hidden"
+              name="productId"
+              value="<%= p.productData.id %>"
+            />
+            <button
+              type="submit"
+              class="py-2 mr-2 px-4 mt-8 rounded border border-slate-500 text-md text-slate-white hover:cursor-pointer hover:scale-110 transition active:scale-75"
+            >
+              Delete
+            </button>
+          </form>
+        </li>
         <% }) %>
       </ul>
       <% } else { %>
