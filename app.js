@@ -1,9 +1,12 @@
-const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+
+const path = require("path");
+
 const adminRouter = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 const errorController = require("./controllers/error-controller");
+const db = require("./utils/database");
 
 const app = express();
 
