@@ -1,13 +1,14 @@
+const Sequelize = require("sequelize");
 const Cart = require("../models/cart-model");
 const Product = require("../models/product-model");
 
 exports.getAllProducts = (req, res, next) => {
-  Product.getAllProduct()
-    .then(([rows, fields]) =>
+  Product.findAll()
+    .then((products) =>
       res.render("shop/product-list", {
         pageTitle: "Products",
         path: "product-list",
-        prod: rows,
+        prod: products,
       })
     )
     .catch((err) => console.log(err));
@@ -16,12 +17,12 @@ exports.getAllProducts = (req, res, next) => {
 exports.getProductById = (req, res, next) => {
   const id = req.params.productId;
 
-  Product.getProductById(id)
-    .then(([product]) => {
+  Product.findByPk(id)
+    .then((product) => {
       res.render("shop/product-details", {
-        pageTitle: product[0].title,
+        pageTitle: product.title,
         path: "",
-        prod: product[0],
+        prod: product,
       });
     })
     .catch((err) => console.log(err));

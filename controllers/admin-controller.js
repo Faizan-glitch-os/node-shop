@@ -9,21 +9,19 @@ exports.getAddProducts = (req, res, next) => {
 };
 
 exports.saveNewProduct = (req, res, next) => {
-  const product = new Product(
-    req.body.title,
-    req.body.img,
-    req.body.price,
-    req.body.description
-  );
-  product
-    .saveNewProduct()
-    .then(() => res.redirect("/product-list"))
+  Product.create({
+    title: req.body.title,
+    img: req.body.img,
+    price: req.body.price,
+    description: req.body.description,
+  })
+    .then(() => res.redirect("/admin/product"))
     .catch((err) => console.log(err));
 };
 
 exports.getAdminProducts = (req, res, next) => {
-  Product.getAllProduct()
-    .then(([products]) =>
+  Product.findAll()
+    .then((products) =>
       res.render("admin/product", {
         pageTitle: "Admin Products",
         path: "admin-products",
@@ -36,7 +34,7 @@ exports.getAdminProducts = (req, res, next) => {
 exports.deleteProduct = (req, res, next) => {
   const id = req.params.productId;
 
-  Product.deleteProductById(id)
+  Product.destroy({ where: { id: id } })
     .then(() => {
       res.redirect("/admin/product");
     })
@@ -50,17 +48,7 @@ exports.getEditProduct = (req, res, next) => {
   if (!editing) {
     return res.redirect("/");
   }
-  Product.getProduct(id, (product) => {
-    if (!product) {
-      return res.redirect("/");
-    }
-    res.render("admin/add-product", {
-      pageTitle: "Edit Product",
-      path: "admin/edit-product",
-      prod: product,
-      editing: editing,
-    });
-  });
+  Product.editProduct();
 };
 
 exports.postEditProduct = (req, res, next) => {

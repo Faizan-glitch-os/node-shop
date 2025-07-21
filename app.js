@@ -1,12 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const sequelize = require("./utils/database");
 
 const path = require("path");
 
 const adminRouter = require("./routes/admin");
 const shopRouter = require("./routes/shop");
 const errorController = require("./controllers/error-controller");
-const db = require("./utils/database");
 
 const app = express();
 
@@ -21,4 +21,7 @@ app.use(shopRouter);
 
 app.use(errorController.error);
 
-app.listen(3000);
+sequelize
+  .sync()
+  .then(() => app.listen(3000))
+  .catch((err) => console.log(err));
