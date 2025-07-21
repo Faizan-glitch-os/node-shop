@@ -48,7 +48,16 @@ exports.getEditProduct = (req, res, next) => {
   if (!editing) {
     return res.redirect("/");
   }
-  Product.editProduct();
+  Product.findByPk(id)
+    .then((product) => {
+      res.render("admin/add-product", {
+        pageTitle: product.title,
+        path: "edit-product",
+        editing: editing,
+        prod: product,
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -58,7 +67,12 @@ exports.postEditProduct = (req, res, next) => {
   const description = req.body.description;
   const id = req.params.productId;
 
-  Product.editProduct(id, title, img, price, description, () => {
-    res.redirect("/admin/product");
-  });
+  Product.update(
+    { title: title, img: img, price: price, description: description },
+    { where: { id: id } }
+  )
+    .then(() => {
+      res.redirect("/admin/product");
+    })
+    .catch((err) => console.log(err));
 };
