@@ -9,18 +9,22 @@ exports.getAddProducts = (req, res, next) => {
 };
 
 exports.saveNewProduct = (req, res, next) => {
-  Product.create({
-    title: req.body.title,
-    img: req.body.img,
-    price: req.body.price,
-    description: req.body.description,
-  })
+  //create product based on current user
+  req.user
+    .createProduct({
+      title: req.body.title,
+      img: req.body.img,
+      price: req.body.price,
+      description: req.body.description,
+    })
     .then(() => res.redirect("/admin/product"))
     .catch((err) => console.log(err));
 };
 
 exports.getAdminProducts = (req, res, next) => {
-  Product.findAll()
+  //get products based on current user
+  req.user
+    .getProducts()
     .then((products) =>
       res.render("admin/product", {
         pageTitle: "Admin Products",
@@ -48,13 +52,16 @@ exports.getEditProduct = (req, res, next) => {
   if (!editing) {
     return res.redirect("/");
   }
-  Product.findByPk(id)
+
+  //get product based on current user
+  req.user
+    .getProducts({ where: { id: id } })
     .then((product) => {
       res.render("admin/add-product", {
         pageTitle: product.title,
         path: "edit-product",
         editing: editing,
-        prod: product,
+        prod: product[0],
       });
     })
     .catch((err) => console.log(err));
